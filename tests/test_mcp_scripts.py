@@ -5,7 +5,7 @@ from pathlib import Path
 import socket
 import time
 import pytest
-
+import os
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -19,6 +19,11 @@ MCP_SCRIPTS = [
 @pytest.fixture(scope="module", autouse=True)
 def mcp_server():
     """Start the MCP server for integration tests and clean it up afterward."""
+    if os.getenv("ECHOMIND_RUN_LIVE_TESTS") != "1":
+        pytest.skip(
+            "Live MCP/Bedrock tests disabled by default. "
+            "Set ECHOMIND_RUN_LIVE_TESTS=1 to enable them."
+        )
     host = "127.0.0.1"
     port = 8000
 
