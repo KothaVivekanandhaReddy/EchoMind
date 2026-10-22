@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 import pytest
-
+import os
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -30,9 +30,15 @@ CORE_SCRIPTS = [
 
 @pytest.mark.parametrize("script_name", CORE_SCRIPTS)
 def test_core_script(script_name):
+    env = os.environ.copy()
+    env["PYTHONPATH"] = (
+        str(PROJECT_ROOT) + os.pathsep + env.get("PYTHONPATH", "")
+    )
+
     result = subprocess.run(
         [sys.executable, script_name],
-        cwd=PROJECT_ROOT,
+        cwd=PROJECT_ROOT / "tests" / "manual",
+        env=env,
         capture_output=True,
         text=True,
         timeout=30,

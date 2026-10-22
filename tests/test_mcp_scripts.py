@@ -76,7 +76,7 @@ def mcp_server():
 def test_mcp_script(script_name):
     result = subprocess.run(
         [sys.executable, script_name],
-        cwd=PROJECT_ROOT,
+        cwd=PROJECT_ROOT / "tests" / "manual",
         capture_output=True,
         text=True,
         timeout=30,
