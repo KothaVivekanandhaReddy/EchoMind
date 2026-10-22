@@ -110,12 +110,3 @@ The Bedrock provider requires valid AWS credentials and model access. The rule-b
 - A dedicated end-user web interface and voice experience are not yet included in this backend.
 - Alexa+ platform integration beyond the self-hosted MCP server has not been established by this repository alone.
 
-## Security notes
-
-- Never commit AWS access keys, session tokens, `.env` files, or private user data.
-- Use test data when recording demonstrations.
-- Keep the local SQLite database out of public version control.
-
-## Project status
-
-EchoMind is an active hackathon project. Verify setup instructions, test results, AWS model availability, and the submission requirements against the final repository before release.
