@@ -1,0 +1,18 @@
+﻿env/
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+data/
+.env
+.env.*
+!.env.example
+bedrock-response.json
+bedrock-config.json
+bedrock-messages.json
+
+# Local databases and generated test outputs
+*.db
+*.sqlite
+*.sqlite3
+bedrock-response.json
